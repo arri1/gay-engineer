@@ -6,6 +6,9 @@ public class RotateWheel : ActionMother
 {
     [SerializeField]
     private FuelBar fuelBar;
+
+    [SerializeField]
+    private Sail sail;
     float speed = 100.0f;
     double fuel = 5.0;
     float fuelFloat = 1.0f;
@@ -26,6 +29,7 @@ public class RotateWheel : ActionMother
         }
         // fuelFloat -= 0.1f;
         fuelBar.SetSize((float)fuel / 6);
+        sail.SetSize((float)fuel/5);
         if (fuel < 0)
         {
             if (speed > 0)
