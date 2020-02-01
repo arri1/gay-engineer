@@ -18,6 +18,7 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
         {
             buttonScript.ButtonTest();
         }
+       
     }
 
 }
