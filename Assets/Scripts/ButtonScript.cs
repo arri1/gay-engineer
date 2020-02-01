@@ -32,7 +32,7 @@ public class ButtonScript : MonoBehaviour
         {
             animator.SetTrigger("buttonTrigger");
             target.Action(command);
-            print("hello world");
+            print("hello world from buttonScript");
             StopAllCoroutines();
             StartCoroutine(timer());
             isBlocked = true;
