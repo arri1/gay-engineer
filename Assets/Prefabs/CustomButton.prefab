@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 492962809}
   m_Layer: 0
   m_Name: CustomButton
-  m_TagString: Button
+  m_TagString: ButtonKotel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
