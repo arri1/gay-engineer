@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ActionMother : MonoBehaviour,  IActionPirate
 {
-    public void Action(string command)
+    public virtual void Action(string command)
     {
 
     }

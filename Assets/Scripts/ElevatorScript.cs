@@ -5,8 +5,9 @@ using UnityEngine;
 public class ElevatorScript : ActionMother
 {
     [SerializeField] private List<Transform> points;
+    [SerializeField] private Transform cabine;
+    private int current = 0;
 
-    private int current=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +18,46 @@ public class ElevatorScript : ActionMother
     {
     }
 
-    void Action(string command)
+    public override void Action(string command)
     {
-        
+        print(command);
+        StopAllCoroutines();
+        switch (command)
+        {
+            case "up":
+                up();
+                break;
+            case "down":
+                down();
+                break;
+        }
     }
 
-    void Up()
+    void up()
     {
-        //if (current<)
+        if (current < points.Count)
+        {
+            current++;
+            StartCoroutine(move(points[current ]));
+            
+        }
+    }
+
+    void down()
+    {
+        if (current > 0)
+        {
+            current--;
+            StartCoroutine(move(points[current ]));
+        }
+    }
+
+    IEnumerator move(Transform endPoint)
+    {
+        while (true)
+        {
+            cabine.position = Vector2.Lerp(cabine.position, endPoint.position, 0.1f);
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
