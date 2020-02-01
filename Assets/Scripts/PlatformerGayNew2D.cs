@@ -6,8 +6,7 @@ using UnityStandardAssets._2D;
 public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
 {
     bool isBlocked = false;
-    public GameObject Obj;
-    public GameObject TpObjTo;
+
     public void Action(string command)
     {
     }
@@ -27,11 +26,8 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
         }
         if(other.gameObject.tag=="AncherButton"){
             print("Hello from guy");
-            var tempPos = Obj.transform.position;
-            while(tempPos.x>-1.285){
-            tempPos.x +=1f;
-            Obj.transform.position = tempPos;
-            }
+            
+            
         }
     }
 
