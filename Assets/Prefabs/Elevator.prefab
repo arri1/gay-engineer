@@ -400,7 +400,7 @@ MonoBehaviour:
   - {fileID: 8510448222923855846}
   - {fileID: 5823060433330803722}
   cabine: {fileID: 5503100535128451360}
-  speed: 0.1
+  speed: 0.06
 --- !u!50 &550170944
 Rigidbody2D:
   serializedVersion: 4
@@ -466,7 +466,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0028898716, y: 0.95431757}
+  m_Offset: {x: -0.0012408495, y: 0.024943769}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -477,7 +477,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4034228, y: 2.532538}
+  m_Size: {x: 3.8914154, y: 0.67379034}
   m_EdgeRadius: 0
 --- !u!1 &5503100536155948297
 GameObject:
