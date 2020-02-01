@@ -21,14 +21,15 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
         var buttonScript = other.gameObject.GetComponent<ButtonScript>();
         if (buttonScript != null)
         {
-            if (buttonScript.gameObject.tag == "ButtonKotel" || buttonScript.gameObject.tag=="Respawn")
+            if (buttonScript.gameObject.tag == "ButtonKotel" && isGrabbed )
             {
                 buttonScript.ButtonTest(isGrabbed);
                 // hit.collider.gameObject.
                 Destroy(hit.collider.gameObject);
                 isGrabbed = false;
             }
-            else
+            
+            if (buttonScript.gameObject.tag != "ButtonKotel")
                 buttonScript.ButtonTest();
         }
 
