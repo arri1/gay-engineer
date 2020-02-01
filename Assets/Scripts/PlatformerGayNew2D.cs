@@ -17,7 +17,7 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        print("Asd");
+        // print("Asd");
         var buttonScript = other.gameObject.GetComponent<ButtonScript>();
         if (buttonScript != null)
         {

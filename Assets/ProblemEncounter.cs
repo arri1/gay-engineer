@@ -29,7 +29,7 @@ public class ProblemEncounter : MonoBehaviour
     void RandomEncounter(){
         
     var point = Random.Range(0,3);
-    print("im in Rand: ",point);
+    print("im in Rand: "+point);
     switch(point){
         case 0: points[0].SetActive(true);break;
          case 1: points[1].SetActive(true);break;
