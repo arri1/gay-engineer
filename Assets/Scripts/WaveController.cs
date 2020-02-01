@@ -20,9 +20,8 @@ public class WaveController : MonoBehaviour
     void Update()
     {
         generateTerrain.heightScale = Mathf.Max(Speed / 100f * maxWaveSpeed, 1f);
-        print(Mathf.Max(Speed / 100f * maxWaveSpeed, 1f));
         generateTerrain.detailScale = detailScale;
-        _parallax.Speed = Speed / 5f;
+        _parallax.Speed = -Speed / 5f;
     }
 
     public void ChangeSpeed(int needSpeed)
