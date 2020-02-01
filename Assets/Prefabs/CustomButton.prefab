@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 108288920359842499}
   - component: {fileID: 7538285539761752910}
+  - component: {fileID: 1340832195}
   m_Layer: 0
   m_Name: button_anim_0
   m_TagString: Untagged
@@ -81,6 +82,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1340832195
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787187459258556160}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d382629ebb1c84f40ab1824e011eb4c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3531075378975256926
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +112,6 @@ GameObject:
   - component: {fileID: 3531075378975256739}
   - component: {fileID: 3531075378975256738}
   - component: {fileID: 3531075378975256737}
-  - component: {fileID: 238463245919316994}
   m_Layer: 0
   m_Name: CustomButton
   m_TagString: Button
@@ -153,24 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01c0224d17be40f6a7489ca805874d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  command: 
+  command: speedUp
   target: {fileID: 0}
---- !u!95 &238463245919316994
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3531075378975256926}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d382629ebb1c84f40ab1824e011eb4c8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  animator: {fileID: 1340832195}
