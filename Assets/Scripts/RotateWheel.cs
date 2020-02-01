@@ -17,7 +17,21 @@ public class RotateWheel : ActionMother
        transform.Rotate(Vector3.forward * speed * Time.deltaTime); 
     }
 
-    void Rotate(){
+    void rotate(){
         speed = speed + 40.0f;
+    }
+
+    public override void Action(string command)
+    {
+        print(command);
+        StopAllCoroutines();
+        switch (command)
+        {
+            case "speedUp":
+                rotate();
+                break;
+            case "down":
+                break;
+        }
     }
 }
