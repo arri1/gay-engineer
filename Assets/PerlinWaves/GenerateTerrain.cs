@@ -61,7 +61,6 @@ public class GenerateTerrain : MonoBehaviour {
 
 	public bool waves = true;
 	void CalculationMethod(int i,int minusZ){
-		print(Time.time);
 		if(waves){
 			vertices[i].z = Mathf.PerlinNoise(Time.time/wavesSpeed + (vertices[i].x + this.transform.position.x)/detailScale,
 				Time.time/wavesSpeed + (vertices[i].y + this.transform.position.y)/detailScale) * heightScale;		
