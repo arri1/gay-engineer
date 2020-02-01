@@ -4,14 +4,19 @@ using UnityEngine;
 using UnityStandardAssets._2D;
 
 public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
-{    
-     bool isBlocked = false;
-     float duration=1;
+{
+    bool isBlocked = false;
+    float duration = 1;
     bool inFire = false;
-    public GameObject encounter;
     private IActionPirate currentAction;
     public void Action(string command)
     {
+    }
+
+    private void demolished()
+    {
+        Destroy(hit.collider.gameObject);
+        isGrabbed = false;
     }
 
 
@@ -21,19 +26,17 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
         var buttonScript = other.gameObject.GetComponent<ButtonScript>();
         if (buttonScript != null)
         {
-            if (buttonScript.gameObject.tag == "ButtonKotel" || buttonScript.gameObject.tag=="Respawn")
+            if (buttonScript.gameObject.tag == "ButtonKotel" && isGrabbed)
             {
                 buttonScript.ButtonTest(isGrabbed);
-                // hit.collider.gameObject.
-                Destroy(hit.collider.gameObject);
-                isGrabbed = false;
+                demolished();
             }
-            else
+
+            if (buttonScript.gameObject.tag != "ButtonKotel")
                 buttonScript.ButtonTest();
         }
 
     }
-
 
     /// Grabber 
     public bool isGrabbed;
@@ -47,19 +50,13 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)&&inFire&&isGrabbed){
-            // print("e pressed");
-            
-            print("hello world from Platf");
-            StopAllCoroutines();
-            StartCoroutine(timer());
-            isBlocked = true;
+        if (Input.GetKeyDown(KeyCode.E) && inFire && isGrabbed)
+        {
             currentAction.Action("fire");
-            Destroy(hit.collider.gameObject);
-            isGrabbed=false;
+            demolished();
+            currentAction = null;
         }
 
         if (Input.GetKeyDown(KeyCode.B))
@@ -90,30 +87,25 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
         }
 
     }
-    void OnTriggerEnter2D(Collider2D col){
-     print("im here");
-         if ((col.gameObject.tag=="Respawn"))
-        {
-           inFire = true;
-           currentAction = col.gameObject.GetComponent<IActionPirate>();
-           
-        }
-
-
-    }
-    void OnTriggerExit2D(Collider2D col){
-     print("im here");
-         if ((col.gameObject.tag=="Respawn"))
-        {
-           inFire = false;
-           currentAction = null;
-        }
-
-    }
-     IEnumerator timer()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        yield return new WaitForSeconds(duration);
-        isBlocked = false;
+        print("im here");
+        if ((col.gameObject.tag == "Respawn"))
+        {
+            inFire = true;
+            currentAction = col.gameObject.GetComponent<IActionPirate>();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        print("im here");
+        if ((col.gameObject.tag == "Respawn"))
+        {
+            inFire = false;
+            currentAction = null;
+        }
+
     }
 
     void OnDrawGizmos()
@@ -126,6 +118,5 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
         Gizmos.color = Color.red;
         Gizmos.DrawLine(holdpoint.position, holdpoint.position + holdpoint.right * distance * sign);
         Gizmos.DrawLine(holdpoint.position, holdpoint.position + holdpoint.up * 0.1f);
-
     }
 }

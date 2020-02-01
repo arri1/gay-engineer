@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5097052275497039733}
   - component: {fileID: 5097052275497039732}
   - component: {fileID: 5097052275497039627}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: fire
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 5097052275647172748}
   - component: {fileID: 5097052275647172751}
   - component: {fileID: 5097052275647172749}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: fire (3)
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 5097052275741119868}
   - component: {fileID: 5097052275741119858}
   - component: {fileID: 5097052275741119859}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: fire (2)
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 5097052275750013933}
   - component: {fileID: 5097052275750013932}
   - component: {fileID: 5097052275750013922}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: fire (1)
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5097052275808337886}
   - component: {fileID: 5097052275808337887}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RandomEncounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
