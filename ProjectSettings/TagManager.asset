@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Button
   - AncherButton
+  - ButtonKotel
   layers:
   - Default
   - TransparentFX
