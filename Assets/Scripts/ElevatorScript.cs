@@ -7,7 +7,7 @@ public class ElevatorScript : ActionMother
 {
     [SerializeField] private List<Transform> points;
     [SerializeField] private Transform cabine;
-    private int current = 0;
+    private int _current = 0;
     [SerializeField] private float speed = 0.1f;
 
     // Start is called before the first frame update
@@ -35,26 +35,25 @@ public class ElevatorScript : ActionMother
         }
     }
 
-    void up()
+    private void up()
     {
-        if (current < points.Count-1)
+        if (_current < points.Count - 1)
         {
-            current++;
-            StartCoroutine(move(points[current ]));
-            
+            _current++;
+            StartCoroutine(move(points[_current]));
         }
     }
 
-    void down()
+    private void down()
     {
-        if (current > 0)
+        if (_current > 0)
         {
-            current--;
-            StartCoroutine(move(points[current ]));
+            _current--;
+            StartCoroutine(move(points[_current]));
         }
     }
 
-    IEnumerator move(Transform endPoint)
+    private IEnumerator move(Transform endPoint)
     {
         while (true)
         {
@@ -65,7 +64,7 @@ public class ElevatorScript : ActionMother
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.transform.parent = cabine.transform;
         }
@@ -73,7 +72,7 @@ public class ElevatorScript : ActionMother
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.transform.parent = null;
         }
