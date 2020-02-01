@@ -35,7 +35,7 @@ public class AnchorScript : ActionMother
 
     void up()
     {
-        if (current < points.Count)
+        if (current < points.Count-1)
         {
             current++;
             StartCoroutine(move(points[current ]));

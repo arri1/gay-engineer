@@ -24,11 +24,7 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
                     StartCoroutine(timer());
                 }
         }
-        if(other.gameObject.tag=="AncherButton"){
-            print("Hello from guy");
-            
-            
-        }
+       
     }
 
     IEnumerator timer()
