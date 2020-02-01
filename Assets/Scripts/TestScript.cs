@@ -22,6 +22,5 @@ public class TestScript : MonoBehaviour
     {
         test.heightScale = heightScale;
         test.detailScale = detailScale;
-        test.wavesSpeed = wavesSpeed;
     }
 }
