@@ -398,6 +398,7 @@ MonoBehaviour:
   - {fileID: 4824049654329846349}
   - {fileID: 8510448222923855846}
   - {fileID: 5823060433330803722}
+  cabine: {fileID: 5503100535128451360}
 --- !u!1 &5503100536155948293
 GameObject:
   m_ObjectHideFlags: 0

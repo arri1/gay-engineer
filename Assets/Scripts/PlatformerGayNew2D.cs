@@ -16,17 +16,14 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
     {
         if (!isBlocked)
         {
-            if (other.gameObject.tag == "Button")
-            {
                 var buttonScript = other.gameObject.GetComponent<ButtonScript>();
                 if (buttonScript != null)
                 {
-                    buttonScript.ButtonTest("up");
+                    buttonScript.ButtonTest();
                     isBlocked = true;
                     StopAllCoroutines();
                     StartCoroutine(timer());
                 }
-            }
         }
         if(other.gameObject.tag=="AncherButton"){
             print("Hello from guy");
