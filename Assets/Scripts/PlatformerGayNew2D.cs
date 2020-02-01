@@ -4,7 +4,12 @@ using UnityEngine;
 using UnityStandardAssets._2D;
 
 public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
-{
+{    
+     bool isBlocked = false;
+     float duration=1;
+    bool inFire = false;
+    public GameObject encounter;
+    private IActionPirate currentAction;
     public void Action(string command)
     {
     }
@@ -12,11 +17,11 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        print("Asd");
+        // print("Asd");
         var buttonScript = other.gameObject.GetComponent<ButtonScript>();
         if (buttonScript != null)
         {
-            if (buttonScript.gameObject.tag == "ButtonKotel")
+            if (buttonScript.gameObject.tag == "ButtonKotel" || buttonScript.gameObject.tag=="Respawn")
             {
                 buttonScript.ButtonTest(isGrabbed);
                 // hit.collider.gameObject.
@@ -45,6 +50,18 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E)&&inFire&&isGrabbed){
+            // print("e pressed");
+            
+            print("hello world from Platf");
+            StopAllCoroutines();
+            StartCoroutine(timer());
+            isBlocked = true;
+            currentAction.Action("fire");
+            Destroy(hit.collider.gameObject);
+            isGrabbed=false;
+        }
+
         if (Input.GetKeyDown(KeyCode.B))
         {
             print("B pressed");
@@ -72,6 +89,31 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
             hit.collider.gameObject.transform.position = holdpoint.position;
         }
 
+    }
+    void OnTriggerEnter2D(Collider2D col){
+     print("im here");
+         if ((col.gameObject.tag=="Respawn"))
+        {
+           inFire = true;
+           currentAction = col.gameObject.GetComponent<IActionPirate>();
+           
+        }
+
+
+    }
+    void OnTriggerExit2D(Collider2D col){
+     print("im here");
+         if ((col.gameObject.tag=="Respawn"))
+        {
+           inFire = false;
+           currentAction = null;
+        }
+
+    }
+     IEnumerator timer()
+    {
+        yield return new WaitForSeconds(duration);
+        isBlocked = false;
     }
 
     void OnDrawGizmos()

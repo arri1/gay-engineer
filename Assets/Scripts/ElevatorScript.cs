@@ -10,6 +10,7 @@ public class ElevatorScript : ActionMother
     private int current = 0;
     [SerializeField] private float speed = 0.1f;
 
+    private Transform savedParrent;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +61,7 @@ public class ElevatorScript : ActionMother
         while (true)
         {
             cabine.position = Vector2.Lerp(cabine.position, endPoint.position, speed);
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -68,6 +69,7 @@ public class ElevatorScript : ActionMother
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            savedParrent = other.gameObject.transform.parent;
             other.gameObject.transform.parent = cabine.transform;
         }
     }
@@ -76,7 +78,9 @@ public class ElevatorScript : ActionMother
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.transform.parent = null;
+            other.gameObject.transform.parent = savedParrent;
         }
     }
+
+  
 }
