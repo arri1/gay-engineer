@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
@@ -29,6 +28,19 @@ public class ButtonScript : MonoBehaviour
     public void ButtonTest()
     {
         if (!isBlocked)
+        {
+            animator.SetTrigger("buttonTrigger");
+            target.Action(command);
+            print("hello world");
+            StopAllCoroutines();
+            StartCoroutine(timer());
+            isBlocked = true;
+        }
+    }
+
+    public void ButtonTest(bool isGrabbed)
+    {
+        if (!isBlocked && isGrabbed)
         {
             animator.SetTrigger("buttonTrigger");
             target.Action(command);
