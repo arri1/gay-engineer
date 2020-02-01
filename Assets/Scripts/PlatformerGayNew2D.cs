@@ -27,7 +27,7 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
 
     IEnumerator timer()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1/2);
         isBlocked = false;
     }
 }
