@@ -2,17 +2,17 @@
 using UnityEngine;
 
 public class onAncherTrigger : MonoBehaviour
-{    public GameObject Ancher;
-     public GameObject AncherPosition;
+{    public GameObject Obj;
+     public GameObject TpObjTo;
      public bool isActive = false;
 void OnTriggerEnter2D (Collider2D other){
-    if ((other.gameObject.tag=="Player")){
-    print("Activated");
-    if(isActive==false){
-        isActive=true;
-    Ancher.transform.position = AncherPosition.transform.position;
-    }
-    else{
+    if ((other.gameObject.tag=="Player")&& Input.GetKeyDown(KeyCode.E)){
+        print("Activated");
+        if(isActive==false){
+            isActive=true;
+            Obj.transform.position = TpObjTo.transform.position;
+            }
+        else{
         print("Deactivated");
         isActive = false;
             }

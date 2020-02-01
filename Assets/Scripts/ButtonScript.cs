@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
+
+    [SerializeField]
+    ActionMother target;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,7 @@ public class ButtonScript : MonoBehaviour
 
     public void ButtonTest () {
         print("hello world");
+
     }
 
 }
