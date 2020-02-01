@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
-
+    // Field to link target element
     [SerializeField]
     ActionMother target;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +20,9 @@ public class ButtonScript : MonoBehaviour
     
     }
 
-    public void ButtonTest () {
+    public void ButtonTest (string command) {
+        target.Action(command);
         print("hello world");
-
     }
 
 }

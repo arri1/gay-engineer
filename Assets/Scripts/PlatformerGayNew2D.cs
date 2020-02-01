@@ -5,19 +5,32 @@ using UnityStandardAssets._2D;
 
 public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
 {
+    bool isBlocked = false;
     public void Action(string command)
     {
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Button")
+        if (!isBlocked)
         {
-            var buttonScript = other.gameObject.GetComponent<ButtonScript>();
-            if (buttonScript != null)
+            if (other.gameObject.tag == "Button")
             {
-                buttonScript.ButtonTest();
+                var buttonScript = other.gameObject.GetComponent<ButtonScript>();
+                if (buttonScript != null)
+                {
+                    buttonScript.ButtonTest("up");
+                    isBlocked = true;
+                    StopAllCoroutines();
+                    StartCoroutine(timer());
+                }
             }
         }
+    }
+
+    IEnumerator timer()
+    {
+        yield return new WaitForSeconds(3);
+        isBlocked = false;
     }
 }
