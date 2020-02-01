@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonScript : MonoBehaviour
+public class ElevatorScript : ActionMother
 {
-    // Field to link target element
-    [SerializeField]
-    ActionMother target;
+    [SerializeField] private List<Transform> points;
 
+    private int current=0;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-    
     }
 
-    public void ButtonTest (string command) {
-        target.Action(command);
-        print("hello world");
+    void Action(string command)
+    {
+        
     }
 
+    void Up()
+    {
+        //if (current<)
+    }
 }
