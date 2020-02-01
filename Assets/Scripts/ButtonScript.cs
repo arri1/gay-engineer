@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
+     
     // Field to link target element
     [SerializeField]
     ActionMother target;
@@ -23,6 +24,7 @@ public class ButtonScript : MonoBehaviour
     public void ButtonTest (string command) {
         target.Action(command);
         print("hello world");
+
     }
 
 }
