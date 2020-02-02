@@ -6,45 +6,70 @@ public class RotateWheel : ActionMother
 {
     [SerializeField]
     private FuelBar fuelBar;
+    [SerializeField]
+    private FuelBar barometr;
 
     [SerializeField]
     private Sail sail;
     float speed = 100.0f;
     double fuel = 5.0;
+    float pressure = 0.6f;
     float fuelFloat = 1.0f;
+    [SerializeField]
+    WaveController waveController;
 
-    // Start is called before the first frame update
     void Start()
     {
-        // fuelBar.SetSize(fuelFloat);
+        waveController.Speed = 0;
+        // barometr.SetSize(0);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // timer();
+
+        waveController.Speed = Mathf.Lerp(waveController.Speed, speed, Time.deltaTime * 0.1f);
+        if (pressure > 0)
+        {
+            pressure -= 0.0006f;
+            if (pressure > 0.9f)
+            {
+                speed = speed / 2;
+            }
+        }
         if (fuel > 0)
         {
             fuel -= 0.01;
         }
-        // fuelFloat -= 0.1f;
         fuelBar.SetSize((float)fuel / 6);
-        sail.SetSize((float)fuel/5);
+        barometr.SetSize((float)pressure / 1.1f);
+
+
+
         if (fuel < 0)
         {
             if (speed > 0)
             {
                 speed -= Time.deltaTime * 10;
+                print("decrease speed");
             }
         }
         transform.Rotate(Vector3.back * speed * Time.deltaTime);
+        print(speed);
     }
 
     void rotate()
     {
         speed = 100.0f;
         fuel = 5;
+        pressure += 0.5f;
+        // print(pressure);
+        // barometr.SetSize((float)pressure);
         // speed = speed + 40.0f;
+    }
+
+    void pullSteam()
+    {
+        pressure = 0;
     }
 
     public override void Action(string command)
@@ -58,12 +83,15 @@ public class RotateWheel : ActionMother
                 break;
             case "down":
                 break;
+            case "pullSteam":
+                pullSteam();
+                break;
         }
     }
 
-    IEnumerable timer()
-    {
-        yield return new WaitForSeconds(1);
-        fuel -= 1;
-    }
+    // IEnumerable timer()
+    // {
+    //     yield return new WaitForSeconds(1);
+    //     fuel -= 1;
+    // }
 }
