@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaveController : MonoBehaviour
 {
     [SerializeField] private GenerateTerrain generateTerrain;
-    [Range(0, 100)] public int Speed = 3;
+    [Range(0, 100)] public float Speed = 3;
     [SerializeField] [Range(0.1f, 40.0f)] float detailScale = 5.0f;
     [SerializeField] private float maxWaveSpeed = 3f;
     [SerializeField] private FreeParallax _parallax;

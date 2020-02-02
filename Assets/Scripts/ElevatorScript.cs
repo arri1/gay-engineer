@@ -8,7 +8,8 @@ public class ElevatorScript : ActionMother
     [SerializeField] private List<Transform> points;
     [SerializeField] private Transform cabine;
     private int current = 0;
-    [SerializeField] private float speed = 0.1f;
+    [SerializeField] private float speed = 0.3f;
+    [SerializeField] private PlatformerGayNew2D platformerGayNew2D;
 
     private Transform savedParrent;
     // Start is called before the first frame update
@@ -37,13 +38,14 @@ public class ElevatorScript : ActionMother
     }
 
     void up()
-    {  print(points.Count);
-        if (current < points.Count-1)
+    {
+        print(points.Count);
+        if (current < points.Count - 1)
         {
-          
+
             current++;
-            StartCoroutine(move(points[current ]));
-            
+            StartCoroutine(move(points[current]));
+
         }
     }
 
@@ -53,6 +55,7 @@ public class ElevatorScript : ActionMother
         {
             current--;
             StartCoroutine(move(points[current]));
+
         }
     }
 
@@ -82,5 +85,5 @@ public class ElevatorScript : ActionMother
         }
     }
 
-  
+
 }

@@ -6,30 +6,49 @@ public class RotateWheel : ActionMother
 {
     [SerializeField]
     private FuelBar fuelBar;
+    [SerializeField]
+    private FuelBar barometr;
 
     [SerializeField]
     private Sail sail;
     float speed = 100.0f;
     double fuel = 5.0;
+    float pressure = 0.6f;
     float fuelFloat = 1.0f;
+    [SerializeField]
+    WaveController waveController;
+    [SerializeField]
+    ParScript parScript;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    RoadBar roadBar;
+
     void Start()
     {
-        // fuelBar.SetSize(fuelFloat);
+        waveController.Speed = 0;
+        // barometr.SetSize(0);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // timer();
+
+        waveController.Speed = Mathf.Lerp(waveController.Speed, speed, Time.deltaTime * 0.1f);
+        if (pressure > 0)
+        {
+            pressure -= 0.0006f;
+            if (pressure > 0.9f)
+            {
+                speed = speed / 2;
+            }
+        }
+
         if (fuel > 0)
         {
             fuel -= 0.01;
         }
-        // fuelFloat -= 0.1f;
         fuelBar.SetSize((float)fuel / 6);
-        sail.SetSize((float)fuel/5);
+        barometr.SetSize((float)pressure / 1.1f);
+
         if (fuel < 0)
         {
             if (speed > 0)
@@ -38,13 +57,21 @@ public class RotateWheel : ActionMother
             }
         }
         transform.Rotate(Vector3.back * speed * Time.deltaTime);
+        roadBar.decreaseWay(waveController.Speed);
+        print("waves speed "+ waveController.Speed);
     }
 
     void rotate()
     {
         speed = 100.0f;
         fuel = 5;
-        // speed = speed + 40.0f;
+        pressure += 0.5f;
+    }
+
+    void pullSteam()
+    {
+        pressure = 0;
+        parScript.Poparim();
     }
 
     public override void Action(string command)
@@ -58,12 +85,10 @@ public class RotateWheel : ActionMother
                 break;
             case "down":
                 break;
+            case "pullSteam":
+                pullSteam();
+                break;
         }
     }
 
-    IEnumerable timer()
-    {
-        yield return new WaitForSeconds(1);
-        fuel -= 1;
-    }
 }

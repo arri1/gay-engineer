@@ -6,6 +6,7 @@ public class AnchorScript : ActionMother
 {
     [SerializeField] private List<Transform> points;
     [SerializeField] private Transform cabine;
+    [SerializeField] WaveController waveController;
     private int current = 1;
 
     // Start is called before the first frame update
@@ -49,6 +50,7 @@ public class AnchorScript : ActionMother
         {
             current--;
             StartCoroutine(move(points[current ]));
+            waveController.Speed =0;
         }
     }
 

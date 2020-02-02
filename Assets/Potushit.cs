@@ -6,11 +6,12 @@ public class Potushit : ActionMother
 {
     [SerializeField] private GameObject bax;
     [SerializeField]
-    private float minRandom=5;
+    private float minRandom = 5;
     [SerializeField]
-    private float maxRandom=15;
+    private float maxRandom = 15;
 
     [SerializeField] private GameObject suriken;
+    [SerializeField] private Health health;
 
     void Start()
     {
@@ -33,8 +34,10 @@ public class Potushit : ActionMother
     void babax()
     {
         bax.SetActive(true);
+        health.decrementHealth();
+        print("Boom!");
     }
-    
+
 
     public override void Action(string command)
     {
@@ -43,8 +46,9 @@ public class Potushit : ActionMother
 
     void potushitFire()
     {
-        Instantiate(suriken,transform);
+        Instantiate(suriken, transform);
         bax.SetActive(false);
         getRandomTimer();
+        health.stopHealth();
     }
 }
