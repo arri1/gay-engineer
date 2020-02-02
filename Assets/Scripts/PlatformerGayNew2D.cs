@@ -7,6 +7,8 @@ using UnityStandardAssets._2D;
 public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
 {
     /// Grabber 
+    
+    public AudioSource audioData;
     public Transform holdpoint;
 
     public int throwforce = 2;
@@ -33,6 +35,7 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
             if (buttonScript.gameObject.tag == "ButtonKotel" && grabbedObject != null)
             {
                 buttonScript.ButtonTest(true);
+                SoundManagers.PlayFireSound();
                 demolished();
             }
 
@@ -45,6 +48,7 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
     // Start is called before the first frame update
     void Start()
     {
+       
     }
 
     void Update()

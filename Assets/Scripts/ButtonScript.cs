@@ -13,7 +13,7 @@ public class ButtonScript : MonoBehaviour
     [SerializeField]
     float duration;
     bool isBlocked = false;
-
+    public AudioClip buttonSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +34,7 @@ public class ButtonScript : MonoBehaviour
             print("hello world from buttonScript");
             StopAllCoroutines();
             StartCoroutine(timer());
+            SoundManagers.PlaySound();
             isBlocked = true;
         }
     }
