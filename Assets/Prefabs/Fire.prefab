@@ -48,6 +48,7 @@ MonoBehaviour:
   bax: {fileID: 615993147283850425}
   minRandom: 5
   maxRandom: 15
+  suriken: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
 --- !u!50 &615993146793135561
 Rigidbody2D:
   serializedVersion: 4

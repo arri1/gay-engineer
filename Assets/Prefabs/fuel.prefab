@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2126905678426361488}
   - component: {fileID: 2126905678426361490}
   - component: {fileID: 7141295236368957003}
-  - component: {fileID: 4384308072215859548}
+  - component: {fileID: 7526557056102138833}
   m_Layer: 0
   m_Name: fuel
   m_TagString: Finish
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7ed8ef6d4bb4c78b233d5b270e3930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &4384308072215859548
+--- !u!61 &7526557056102138833
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.119110584, y: -0.3126669}
+  m_Offset: {x: -0.0570755, y: -0.2849326}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -140,5 +140,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.8004093, y: 7.2261934}
+  m_Size: {x: 5.7627716, y: 7.209076}
   m_EdgeRadius: 0
