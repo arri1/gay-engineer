@@ -10,6 +10,8 @@ public class Potushit : ActionMother
     [SerializeField]
     private float maxRandom=15;
 
+    [SerializeField] private GameObject suriken;
+
     void Start()
     {
         getRandomTimer();
@@ -41,6 +43,7 @@ public class Potushit : ActionMother
 
     void potushitFire()
     {
+        Instantiate(suriken,transform);
         bax.SetActive(false);
         getRandomTimer();
     }
