@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 951907270}
   - component: {fileID: 951907269}
   - component: {fileID: 951907268}
+  - component: {fileID: 951907271}
   m_Layer: 0
   m_Name: "1 \u043A\u043E\u043C\u0430\u043D\u0434\u0430"
   m_TagString: Untagged
@@ -303,3 +304,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &951907271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951907267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e303d9d511784dbc8896f15aebbbc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
