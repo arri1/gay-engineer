@@ -21,6 +21,7 @@ public class RotateWheel : ActionMother
     ParScript parScript;
 
     [SerializeField]
+    RoadBar roadBar;
 
     void Start()
     {
@@ -56,6 +57,8 @@ public class RotateWheel : ActionMother
             }
         }
         transform.Rotate(Vector3.back * speed * Time.deltaTime);
+        roadBar.decreaseWay(waveController.Speed);
+        print("waves speed "+ waveController.Speed);
     }
 
     void rotate()

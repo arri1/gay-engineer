@@ -24,12 +24,12 @@ class Health : MonoBehaviour
 
     public void decrementHealth()
     {
-        damageMultiply += 0.0005f;
+        damageMultiply += 0.0001f;
     }
 
     public void stopHealth()
     {
-        damageMultiply -= 0.0005f;
+        damageMultiply -= 0.0001f;
     }
 
     public void SetSize(float sizeNormalized)
