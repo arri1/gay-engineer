@@ -28,6 +28,20 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
                 Destroy(hit.collider.gameObject);
                 isGrabbed = false;
             }
+            if((buttonScript.gameObject.tag=="sail")&&parusIsOn==false)
+            {
+               
+                parusIsOn = true;
+                
+
+            }
+             if((buttonScript.gameObject.tag=="sail")&&parusIsOn==true)
+            {
+               
+                parusIsOn = false;
+               
+            }
+
             else
                 buttonScript.ButtonTest();
         }
@@ -37,6 +51,7 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
 
     /// Grabber 
     public bool isGrabbed;
+    public bool parusIsOn = false;
     public Transform holdpoint;
     public int throwforce = 2;
     RaycastHit2D hit;
@@ -50,6 +65,17 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
     // Update is called once per frame
     void Update()
     {
+        
+        if(parusIsOn){
+            currentAction.Action("sailsOn");
+            print("On");
+        }
+        if(!parusIsOn){
+              currentAction.Action("sailsOff");
+              print("Off");    
+        }
+
+
         if (Input.GetKeyDown(KeyCode.E)&&inFire&&isGrabbed){
             // print("e pressed");
             
@@ -98,34 +124,32 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
            currentAction = col.gameObject.GetComponent<IActionPirate>();
            
         }
-
+        
 
     }
     void OnTriggerExit2D(Collider2D col){
      print("im here");
-         if ((col.gameObject.tag=="Respawn"))
-        {
-           inFire = false;
-           currentAction = null;
+         if ((col.gameObject.tag=="Respawn")){
+             inFire = false;
+             currentAction = null;
+            }
         }
-
-    }
      IEnumerator timer()
     {
         yield return new WaitForSeconds(duration);
         isBlocked = false;
     }
 
-    void OnDrawGizmos()
-    {
-        int sign = 1;
-        if (transform.localScale.x < 0)
-        {
-            sign = -1;
-        }
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(holdpoint.position, holdpoint.position + holdpoint.right * distance * sign);
-        Gizmos.DrawLine(holdpoint.position, holdpoint.position + holdpoint.up * 0.1f);
+    // void OnDrawGizmos()
+    // {
+    //     int sign = 1;
+    //     if (transform.localScale.x < 0)
+    //     {
+    //         sign = -1;
+    //     }
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawLine(holdpoint.position, holdpoint.position + holdpoint.right * distance * sign);
+    //     Gizmos.DrawLine(holdpoint.position, holdpoint.position + holdpoint.up * 0.1f);
 
-    }
+    // }
 }

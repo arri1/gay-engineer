@@ -38,6 +38,29 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
+    public void SailsOn(){
+        if (!isBlocked)
+        {
+            target.Action(command);
+            print("hello world from SailOn");
+            StopAllCoroutines();
+            StartCoroutine(timer());
+            isBlocked = true;
+        }
+
+    }
+    public void SailsOff(){
+        if (!isBlocked)
+        {
+            target.Action(command);
+            print("hello world from SailOn");
+            StopAllCoroutines();
+            StartCoroutine(timer());
+            isBlocked = true;
+        }
+
+    }
+
     public void ButtonTest(bool isGrabbed)
     {
         if (!isBlocked && isGrabbed)
