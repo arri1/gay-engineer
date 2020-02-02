@@ -1,5 +1,5 @@
 
 public interface IActionPirate {
-    void Action(string command);
+    void Action(string command="");
 
 }

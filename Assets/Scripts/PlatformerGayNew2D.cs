@@ -1,22 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets._2D;
 
 public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
 {
-    bool isBlocked = false;
-    float duration = 1;
-    bool inFire = false;
-    private IActionPirate currentAction;
+    /// Grabber 
+    public Transform holdpoint;
+
+    public int throwforce = 2;
+    RaycastHit2D hit;
+    public float distance = 0.01f;
+    [SerializeField] private GameObject grabbedObject=null;
+
     public void Action(string command)
     {
     }
 
     private void demolished()
     {
-        Destroy(hit.collider.gameObject);
-        isGrabbed = false;
+        Destroy(grabbedObject);
     }
 
 
@@ -26,87 +30,55 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
         var buttonScript = other.gameObject.GetComponent<ButtonScript>();
         if (buttonScript != null)
         {
-            if (buttonScript.gameObject.tag == "ButtonKotel" && isGrabbed)
+            if (buttonScript.gameObject.tag == "ButtonKotel" && grabbedObject != null)
             {
-                buttonScript.ButtonTest(isGrabbed);
+                buttonScript.ButtonTest(true);
                 demolished();
             }
 
             if (buttonScript.gameObject.tag != "ButtonKotel")
                 buttonScript.ButtonTest();
         }
-
     }
 
-    /// Grabber 
-    public bool isGrabbed;
-    public Transform holdpoint;
-    public int throwforce = 2;
-    RaycastHit2D hit;
-    public float distance = 0.01f;
+
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && inFire && isGrabbed)
-        {
-            currentAction.Action("fire");
-            demolished();
-            currentAction = null;
-        }
-
         if (Input.GetKeyDown(KeyCode.B))
         {
-            print("B pressed");
-            if (!isGrabbed)
+            if (grabbedObject == null)
             {
-                hit = Physics2D.CircleCast(holdpoint.position, 0.1f, holdpoint.right * transform.localScale.x, distance);
+                hit = Physics2D.CircleCast(holdpoint.position, 0.1f, holdpoint.right * transform.localScale.x,
+                    distance);
                 if (hit.collider != null)
                 {
-                    print(hit.collider.gameObject.tag);
-                    isGrabbed = true;
+                    grabbedObject = hit.collider.gameObject;
                 }
             }
             else
             {
-                isGrabbed = false;
-                if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+                if (grabbedObject.GetComponent<Rigidbody2D>() != null)
                 {
-                    hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwforce;
+                    grabbedObject.GetComponent<Rigidbody2D>().velocity =
+                        new Vector2(transform.localScale.x, 1) * throwforce;
                 }
+
+                grabbedObject = null;
             }
         }
 
-        if (isGrabbed)
+        if (grabbedObject != null)
         {
-            hit.collider.gameObject.transform.position = holdpoint.position;
-        }
-
-    }
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        print("im here");
-        if ((col.gameObject.tag == "Respawn"))
-        {
-            inFire = true;
-            currentAction = col.gameObject.GetComponent<IActionPirate>();
+            grabbedObject.transform.position = holdpoint.position;
         }
     }
 
-    void OnTriggerExit2D(Collider2D col)
-    {
-        print("im here");
-        if ((col.gameObject.tag == "Respawn"))
-        {
-            inFire = false;
-            currentAction = null;
-        }
 
-    }
 
     void OnDrawGizmos()
     {
@@ -115,6 +87,7 @@ public class PlatformerGayNew2D : PlatformerCharacter2D, IActionPirate
         {
             sign = -1;
         }
+
         Gizmos.color = Color.red;
         Gizmos.DrawLine(holdpoint.position, holdpoint.position + holdpoint.right * distance * sign);
         Gizmos.DrawLine(holdpoint.position, holdpoint.position + holdpoint.up * 0.1f);

@@ -4,13 +4,44 @@ using UnityEngine;
 
 public class Potushit : ActionMother
 {
+    [SerializeField] private GameObject bax;
+    [SerializeField]
+    private float minRandom=5;
+    [SerializeField]
+    private float maxRandom=15;
+
+    void Start()
+    {
+        getRandomTimer();
+    }
+
+    void getRandomTimer()
+    {
+        float r = Random.Range(minRandom, maxRandom);
+        StopAllCoroutines();
+        StartCoroutine(startTimer(r));
+    }
+
+    IEnumerator startTimer(float t)
+    {
+        yield return new WaitForSeconds(t);
+        babax();
+    }
+
+    void babax()
+    {
+        bax.SetActive(true);
+    }
+    
+
     public override void Action(string command)
     {
-        PotushitFire();
+        potushitFire();
     }
-    void PotushitFire()
+
+    void potushitFire()
     {
-        gameObject.SetActive(false);
-        print("hello world from Potushit");
+        bax.SetActive(false);
+        getRandomTimer();
     }
 }

@@ -7,6 +7,8 @@ TagManager:
   - Button
   - AncherButton
   - ButtonKotel
+  - FxTemporaire
+  - Fire
   layers:
   - Default
   - TransparentFX
