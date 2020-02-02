@@ -17,6 +17,10 @@ public class RotateWheel : ActionMother
     float fuelFloat = 1.0f;
     [SerializeField]
     WaveController waveController;
+    [SerializeField]
+    ParScript parScript;
+
+    [SerializeField]
 
     void Start()
     {
@@ -36,6 +40,7 @@ public class RotateWheel : ActionMother
                 speed = speed / 2;
             }
         }
+
         if (fuel > 0)
         {
             fuel -= 0.01;
@@ -43,18 +48,14 @@ public class RotateWheel : ActionMother
         fuelBar.SetSize((float)fuel / 6);
         barometr.SetSize((float)pressure / 1.1f);
 
-
-
         if (fuel < 0)
         {
             if (speed > 0)
             {
                 speed -= Time.deltaTime * 10;
-                print("decrease speed");
             }
         }
         transform.Rotate(Vector3.back * speed * Time.deltaTime);
-        print(speed);
     }
 
     void rotate()
@@ -62,14 +63,12 @@ public class RotateWheel : ActionMother
         speed = 100.0f;
         fuel = 5;
         pressure += 0.5f;
-        // print(pressure);
-        // barometr.SetSize((float)pressure);
-        // speed = speed + 40.0f;
     }
 
     void pullSteam()
     {
         pressure = 0;
+        parScript.Poparim();
     }
 
     public override void Action(string command)
@@ -89,9 +88,4 @@ public class RotateWheel : ActionMother
         }
     }
 
-    // IEnumerable timer()
-    // {
-    //     yield return new WaitForSeconds(1);
-    //     fuel -= 1;
-    // }
 }
