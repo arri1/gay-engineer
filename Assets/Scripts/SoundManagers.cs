@@ -14,7 +14,14 @@ public static class SoundManagers
        
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        audioSource.Play(GameAssets.i.fireSound);
+        audioSource.PlayOneShot(GameAssets.i.fireSound);
+
+    }
+    public static void PlayRunSound(){ 
+       
+        GameObject soundGameObject = new GameObject("Sound");
+        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        audioSource.PlayOneShot(GameAssets.i.runSound);
 
     }
 }

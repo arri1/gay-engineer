@@ -7,6 +7,7 @@ public class GameAssets : MonoBehaviour
       public AudioClip buttonSound;
     public AudioClip seaSound;
     public AudioClip fireSound;
+    public AudioClip runSound;
   private static GameAssets _i;
     public static GameAssets i{
         get{
