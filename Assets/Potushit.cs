@@ -4,43 +4,47 @@ using UnityEngine;
 
 public class Potushit : ActionMother
 {
+    [SerializeField] private GameObject bax;
     [SerializeField]
-    string command;
-    // Field to link target element
+    private float minRandom=5;
     [SerializeField]
-    ActionMother target;
-    
-    [SerializeField]
-    float duration=1;
-    bool isBlocked = false;
-    public GameObject encounter;
-    
-  
-    // Start is called before the first frame update
-    public override void Action(string command){
-        switch(command){
-            case "fire":
-            PotushitFire();
-            break;
-            default : print("def");break;
-        }
-    }
-        void PotushitFire() {
-        //  if (!isBlocked)
-        // {
-            encounter.SetActive(false);
-            // target.Action(command);
-            print("hello world from Potushit");
-            // StopAllCoroutines();
-            // StartCoroutine(timer());
-            // isBlocked = true;
-          
-        // }
-        
-      }
-       IEnumerator timer()
+    private float maxRandom=15;
+
+    [SerializeField] private GameObject suriken;
+
+    void Start()
     {
-        yield return new WaitForSeconds(duration);
-        isBlocked = false;
+        getRandomTimer();
     }
+
+    void getRandomTimer()
+    {
+        float r = Random.Range(minRandom, maxRandom);
+        StopAllCoroutines();
+        StartCoroutine(startTimer(r));
     }
+
+    IEnumerator startTimer(float t)
+    {
+        yield return new WaitForSeconds(t);
+        babax();
+    }
+
+    void babax()
+    {
+        bax.SetActive(true);
+    }
+    
+
+    public override void Action(string command)
+    {
+        potushitFire();
+    }
+
+    void potushitFire()
+    {
+        Instantiate(suriken,transform);
+        bax.SetActive(false);
+        getRandomTimer();
+    }
+}

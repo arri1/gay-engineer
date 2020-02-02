@@ -4,19 +4,33 @@ using UnityEngine;
 
 public class RotateWheel : ActionMother
 {
+    [SerializeField]
+    private FuelBar fuelBar;
+
+    [SerializeField]
+    private Sail sail;
     float speed = 100.0f;
-    double fuel = 5;
+    double fuel = 5.0;
+    float fuelFloat = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        // fuelBar.SetSize(fuelFloat);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // timer();
         if (fuel > 0)
+        {
+            fuel -= 0.01;
+        }
+        // fuelFloat -= 0.1f;
+        fuelBar.SetSize((float)fuel / 6);
+        sail.SetSize((float)fuel/5);
+        if (fuel < 0)
         {
             if (speed > 0)
             {

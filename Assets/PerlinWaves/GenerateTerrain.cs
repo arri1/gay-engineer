@@ -12,14 +12,25 @@ public class GenerateTerrain : MonoBehaviour {
 
 	void Start(){
 		MyMethod();
+
 	}
-	void Update(){
-		
-			MyMethod();
+	void Update()
+	{
+		MyMethod();
 
 	}
 
-	public float wavesSpeed = 2;
+	IEnumerator myMethod()
+	{
+		while (true)
+		{
+			yield return new WaitForEndOfFrame();
+		}
+	}
+
+
+	[SerializeField]
+	float wavesSpeed = 2;
 	private int counter = 0, zLevel = 0;
 	void MyMethod(){
 		
@@ -50,7 +61,6 @@ public class GenerateTerrain : MonoBehaviour {
 
 	public bool waves = true;
 	void CalculationMethod(int i,int minusZ){
-		
 		if(waves){
 			vertices[i].z = Mathf.PerlinNoise(Time.time/wavesSpeed + (vertices[i].x + this.transform.position.x)/detailScale,
 				Time.time/wavesSpeed + (vertices[i].y + this.transform.position.y)/detailScale) * heightScale;		
